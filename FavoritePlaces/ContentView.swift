@@ -22,6 +22,8 @@ struct ContentView: View {
     @State var isFavorite: Bool = false
     @State var showSheet: Bool = false
     
+    let sheetHeight  = stride(from: 0.2, through: 0.2, by: 1).map{ PresentationDetent.fraction($0) }
+    
     var body: some View {
         ZStack {
             MapReader { proxy in
@@ -86,7 +88,29 @@ struct ContentView: View {
             }
         }
         .sheet(isPresented: $showSheet) {
-            Text("Heyyy")
+            ScrollView(.horizontal) {
+                LazyHStack {
+                    ForEach(places) { place in
+                        let coordinates = "\(place.coordinates.latitude), \(place.coordinates.longitude)"
+                        VStack(alignment: .leading) {
+                            Text(place.name).font(.title3).bold()
+                            Text(coordinates).font(.caption2).foregroundColor(.gray)
+                        }
+                        .frame(width: 150, height: 100)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.secondary, lineWidth: 2)
+                                .shadow(color: Color.black.opacity(0.5), radius: 12, x: 0, y: 4)
+                                .padding(8)
+                        )
+                        .overlay(alignment: .topTrailing) {
+                            Image(systemName: "star.fill").foregroundColor(.yellow).padding(12)
+                        }
+                        .padding(.horizontal, 8)
+                    }
+                }
+            }
+            .presentationDetents(Set(sheetHeight))
         }
     }
     
