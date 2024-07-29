@@ -15,6 +15,7 @@
 		BF8377782C54770900219370 /* FavoritePlacesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8377772C54770900219370 /* FavoritePlacesUITests.swift */; };
 		BF83777A2C54770900219370 /* FavoritePlacesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8377792C54770900219370 /* FavoritePlacesUITestsLaunchTests.swift */; };
 		BF83778A2C54860900219370 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8377892C54860900219370 /* Place.swift */; };
+		BF83778C2C5487A300219370 /* CustomDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF83778B2C5487A300219370 /* CustomDialog.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		BF8377772C54770900219370 /* FavoritePlacesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlacesUITests.swift; sourceTree = "<group>"; };
 		BF8377792C54770900219370 /* FavoritePlacesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlacesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BF8377892C54860900219370 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		BF83778B2C5487A300219370 /* CustomDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDialog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				BF83775F2C54770900219370 /* Assets.xcassets */,
 				BF8377612C54770900219370 /* FavoritePlaces.entitlements */,
 				BF8377622C54770900219370 /* Preview Content */,
+				BF83778B2C5487A300219370 /* CustomDialog.swift */,
 			);
 			path = FavoritePlaces;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF83778C2C5487A300219370 /* CustomDialog.swift in Sources */,
 				BF83778A2C54860900219370 /* Place.swift in Sources */,
 				BF83775E2C54770700219370 /* ContentView.swift in Sources */,
 				BF83775C2C54770700219370 /* FavoritePlacesApp.swift in Sources */,

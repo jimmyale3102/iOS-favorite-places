@@ -16,6 +16,7 @@ struct ContentView: View {
             span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
         )
     )
+    @State var places: [Place] = []
     
     var body: some View {
         ZStack {
