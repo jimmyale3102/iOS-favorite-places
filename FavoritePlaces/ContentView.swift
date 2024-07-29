@@ -20,6 +20,7 @@ struct ContentView: View {
     @State var places: [Place] = []
     @State var locationName: String = ""
     @State var isFavorite: Bool = false
+    @State var showSheet: Bool = false
     
     var body: some View {
         ZStack {
@@ -42,6 +43,19 @@ struct ContentView: View {
                 .onTapGesture { coordinates in
                     if let coordinates = proxy.convert(coordinates, from: .local) {
                         coordinatesSelected = coordinates
+                    }
+                }
+                .overlay {
+                    VStack {
+                        Button("Show list") {
+                            showSheet = true
+                        }
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 8)
+                        .background(.white)
+                        .cornerRadius(16)
+                        .padding(16)
+                        Spacer()
                     }
                 }
             }
@@ -70,6 +84,9 @@ struct ContentView: View {
                     )
                 }
             }
+        }
+        .sheet(isPresented: $showSheet) {
+            Text("Heyyy")
         }
     }
     
