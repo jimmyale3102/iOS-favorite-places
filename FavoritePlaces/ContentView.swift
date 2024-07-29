@@ -27,7 +27,7 @@ struct ContentView: View {
                 Map(position: $position) {
                     ForEach(places) { place in
                         Annotation(
-                            title: place.name,
+                            place.name,
                             coordinate: place.coordinates,
                             content: {
                                 let strokeColor = if place.isFavorite { Color.yellow } else { Color.blue }
@@ -57,7 +57,7 @@ struct ContentView: View {
                     Spacer()
                     Button("Save") {
                         savePlace(name: locationName, isFav: isFavorite, coordinates: coordinatesSelected!)
-                        coordinatesSelected = nil
+                        clearDialogData()
                     }
                 }
                 withAnimation {
@@ -76,6 +76,12 @@ struct ContentView: View {
     func savePlace(name: String, isFav: Bool, coordinates: CLLocationCoordinate2D) {
         let newPlace = Place(name: name, coordinates: coordinates, isFavorite: isFav)
         places.append(newPlace)
+    }
+    
+    func clearDialogData() {
+        locationName = ""
+        isFavorite = false
+        coordinatesSelected = nil
     }
 }
 
