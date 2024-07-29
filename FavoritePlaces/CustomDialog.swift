@@ -15,11 +15,13 @@ struct CustomDialog<Content: View>: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(.gray.opacity(0.7))
+                .fill(.gray.opacity(0.8))
                 .ignoresSafeArea()
                 .onTapGesture {
                     if onDismissOutside {
-                        closeDialog()
+                        withAnimation {
+                            closeDialog()
+                        }
                     }
                 }
             content
@@ -29,11 +31,17 @@ struct CustomDialog<Content: View>: View {
                 .cornerRadius(16)
                 .overlay(alignment: .topTrailing) {
                     Button(
-                        action: { closeDialog() },
+                        action: {
+                            withAnimation {
+                                closeDialog()
+                            }
+                        },
                         label: {
                             Image(systemName: "xmark.circle")
                         }
                     )
+                    .foregroundColor(.gray)
+                    .padding(16)
                 }
         }
         .ignoresSafeArea()

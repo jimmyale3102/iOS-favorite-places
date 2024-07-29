@@ -12,4 +12,5 @@ struct Place: Identifiable {
     var id = UUID()
     var name: String
     var coordinates: CLLocationCoordinate2D
+    var isFavorite: Bool
 }
