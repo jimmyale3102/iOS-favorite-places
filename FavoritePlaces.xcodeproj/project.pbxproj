@@ -14,7 +14,8 @@
 		BF83776E2C54770900219370 /* FavoritePlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF83776D2C54770900219370 /* FavoritePlacesTests.swift */; };
 		BF8377782C54770900219370 /* FavoritePlacesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8377772C54770900219370 /* FavoritePlacesUITests.swift */; };
 		BF83777A2C54770900219370 /* FavoritePlacesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8377792C54770900219370 /* FavoritePlacesUITestsLaunchTests.swift */; };
-		BF8377872C54774400219370 /* .gitignore.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF8377862C54774400219370 /* .gitignore.xib */; };
+		BF83778A2C54860900219370 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8377892C54860900219370 /* Place.swift */; };
+		BF83778C2C5487A300219370 /* CustomDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF83778B2C5487A300219370 /* CustomDialog.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +47,8 @@
 		BF8377732C54770900219370 /* FavoritePlacesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FavoritePlacesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8377772C54770900219370 /* FavoritePlacesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlacesUITests.swift; sourceTree = "<group>"; };
 		BF8377792C54770900219370 /* FavoritePlacesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlacesUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		BF8377862C54774400219370 /* .gitignore.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = .gitignore.xib; sourceTree = "<group>"; };
+		BF8377892C54860900219370 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		BF83778B2C5487A300219370 /* CustomDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDialog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +79,6 @@
 		BF83774F2C54770700219370 = {
 			isa = PBXGroup;
 			children = (
-				BF8377862C54774400219370 /* .gitignore.xib */,
 				BF83775A2C54770700219370 /* FavoritePlaces */,
 				BF83776C2C54770900219370 /* FavoritePlacesTests */,
 				BF8377762C54770900219370 /* FavoritePlacesUITests */,
@@ -98,11 +99,13 @@
 		BF83775A2C54770700219370 /* FavoritePlaces */ = {
 			isa = PBXGroup;
 			children = (
+				BF8377882C5485F800219370 /* model */,
 				BF83775B2C54770700219370 /* FavoritePlacesApp.swift */,
 				BF83775D2C54770700219370 /* ContentView.swift */,
 				BF83775F2C54770900219370 /* Assets.xcassets */,
 				BF8377612C54770900219370 /* FavoritePlaces.entitlements */,
 				BF8377622C54770900219370 /* Preview Content */,
+				BF83778B2C5487A300219370 /* CustomDialog.swift */,
 			);
 			path = FavoritePlaces;
 			sourceTree = "<group>";
@@ -130,6 +133,14 @@
 				BF8377792C54770900219370 /* FavoritePlacesUITestsLaunchTests.swift */,
 			);
 			path = FavoritePlacesUITests;
+			sourceTree = "<group>";
+		};
+		BF8377882C5485F800219370 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				BF8377892C54860900219370 /* Place.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,7 +247,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF8377872C54774400219370 /* .gitignore.xib in Resources */,
 				BF8377642C54770900219370 /* Preview Assets.xcassets in Resources */,
 				BF8377602C54770900219370 /* Assets.xcassets in Resources */,
 			);
@@ -263,6 +273,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF83778C2C5487A300219370 /* CustomDialog.swift in Sources */,
+				BF83778A2C54860900219370 /* Place.swift in Sources */,
 				BF83775E2C54770700219370 /* ContentView.swift in Sources */,
 				BF83775C2C54770700219370 /* FavoritePlacesApp.swift in Sources */,
 			);
