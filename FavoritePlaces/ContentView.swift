@@ -24,12 +24,26 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             MapReader { proxy in
-                Map(position: $position)
-                    .onTapGesture { coordinates in
-                        if let coordinates = proxy.convert(coordinates, from: .local) {
-                            coordinatesSelected = coordinates
-                        }
+                Map(position: $position) {
+                    ForEach(places) { place in
+                        Annotation(
+                            title: place.name,
+                            coordinate: place.coordinates,
+                            content: {
+                                let strokeColor = if place.isFavorite { Color.yellow } else { Color.blue }
+                                Circle()
+                                    .stroke(strokeColor, lineWidth: 3)
+                                    .fill(.white)
+                                    .frame(width: 35, height: 35)
+                            }
+                        )
                     }
+                }
+                .onTapGesture { coordinates in
+                    if let coordinates = proxy.convert(coordinates, from: .local) {
+                        coordinatesSelected = coordinates
+                    }
+                }
             }
             if coordinatesSelected != nil {
                 let dialogView = VStack {
