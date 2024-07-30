@@ -94,19 +94,26 @@ struct ContentView: View {
                         let coordinates = "\(place.coordinates.latitude), \(place.coordinates.longitude)"
                         VStack(alignment: .leading) {
                             Text(place.name).font(.title3).bold()
-                            Text(coordinates).font(.caption2).foregroundColor(.gray)
+                                .frame(maxWidth: 120)
+                                .padding(.horizontal, 8)
                         }
                         .frame(width: 150, height: 100)
                         .overlay(
                             RoundedRectangle(cornerRadius: 12)
-                                .stroke(Color.secondary, lineWidth: 2)
+                                .stroke(Color.secondary.opacity(0.5), lineWidth: 1)
                                 .shadow(color: Color.black.opacity(0.5), radius: 12, x: 0, y: 4)
                                 .padding(8)
                         )
                         .overlay(alignment: .topTrailing) {
-                            Image(systemName: "star.fill").foregroundColor(.yellow).padding(12)
+                            if place.isFavorite {
+                                Image(systemName: "star.fill").foregroundColor(.yellow).padding(12)
+                            }
                         }
                         .padding(.horizontal, 8)
+                        .onTapGesture {
+                            navigateToLocation(coordinates: place.coordinates)
+                            showSheet = false
+                        }
                     }
                 }
             }
@@ -123,6 +130,17 @@ struct ContentView: View {
         locationName = ""
         isFavorite = false
         coordinatesSelected = nil
+    }
+    
+    func navigateToLocation(coordinates: CLLocationCoordinate2D) {
+        withAnimation {
+            position = MapCameraPosition.region(
+                MKCoordinateRegion(
+                    center: coordinates,
+                    span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+                )
+            )
+        }
     }
 }
 
