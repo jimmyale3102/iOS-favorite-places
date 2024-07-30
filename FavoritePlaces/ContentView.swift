@@ -88,10 +88,30 @@ struct ContentView: View {
             }
         }
         .sheet(isPresented: $showSheet) {
+            if places.isEmpty {
+                ZStack {
+                    VStack {
+                        Image(systemName: "rectangle.and.text.magnifyingglass")
+                            .resizable()
+                            .frame(width: 38, height: 38)
+                        Text("There are not places saved yet")
+                            .font(.title3)
+                            .bold()
+                            .foregroundColor(.darkBrownApp)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 8)
+                        Text("Press anywhere on the map to start saving places")
+                            .font(.caption2)
+                            .bold()
+                            .foregroundColor(.gray)
+                            .padding(.horizontal, 8)
+                    }
+                    .frame(height: 150, alignment: .center)
+                }
+            }
             ScrollView(.horizontal) {
                 LazyHStack {
                     ForEach(places) { place in
-                        let coordinates = "\(place.coordinates.latitude), \(place.coordinates.longitude)"
                         VStack(alignment: .leading) {
                             Text(place.name).font(.title3).bold()
                                 .frame(maxWidth: 120)
