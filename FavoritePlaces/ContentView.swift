@@ -21,6 +21,7 @@ struct ContentView: View {
     @State var locationName: String = ""
     @State var isFavorite: Bool = false
     @State var showSheet: Bool = false
+    let PLACES_KEY = "places"
     
     let sheetHeight  = stride(from: 0.2, through: 0.2, by: 1).map{ PresentationDetent.fraction($0) }
     
@@ -86,7 +87,9 @@ struct ContentView: View {
                     )
                 }
             }
-        }
+        }.onAppear(perform: {
+            getPlaces()
+        })
         .sheet(isPresented: $showSheet) {
             if places.isEmpty {
                 ZStack {
@@ -113,7 +116,7 @@ struct ContentView: View {
                 LazyHStack {
                     ForEach(places) { place in
                         VStack(alignment: .leading) {
-                            Text(place.name).font(.title3).bold()
+                            Text(place.name).font(.caption).bold()
                                 .frame(maxWidth: 120)
                                 .padding(.horizontal, 8)
                         }
@@ -144,6 +147,7 @@ struct ContentView: View {
     func savePlace(name: String, isFav: Bool, coordinates: CLLocationCoordinate2D) {
         let newPlace = Place(name: name, coordinates: coordinates, isFavorite: isFav)
         places.append(newPlace)
+        savePlaces()
     }
     
     func clearDialogData() {
@@ -160,6 +164,22 @@ struct ContentView: View {
                     span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
                 )
             )
+        }
+    }
+}
+
+extension ContentView {
+    
+    func savePlaces() {
+        if let encodeData = try? JSONEncoder().encode(places) {
+            UserDefaults.standard.set(encodeData, forKey: PLACES_KEY)
+        }
+    }
+    
+    func getPlaces() {
+        if let savedPlaces = UserDefaults.standard.data(forKey: PLACES_KEY),
+           let decodedPlaces = try? JSONDecoder().decode([Place].self, from: savedPlaces) {
+            places = decodedPlaces
         }
     }
 }
