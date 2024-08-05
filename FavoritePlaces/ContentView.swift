@@ -132,6 +132,11 @@ struct ContentView: View {
                                 Image(systemName: "star.fill").foregroundColor(.yellow).padding(12)
                             }
                         }
+                        .overlay(alignment: .bottomTrailing) {
+                            Button(action: { deletePlace(place: place) } ) {
+                                Image(systemName: "trash.circle").foregroundColor(.secondary).padding(16)
+                            }
+                        }
                         .padding(.horizontal, 8)
                         .onTapGesture {
                             navigateToLocation(coordinates: place.coordinates)
@@ -141,6 +146,13 @@ struct ContentView: View {
                 }
             }
             .presentationDetents(Set(sheetHeight))
+        }
+    }
+    
+    func deletePlace(place: Place) {
+        if let index = places.firstIndex(where: { $0.id == place.id }) {
+            places.remove(at: index)
+            savePlaces()
         }
     }
     
